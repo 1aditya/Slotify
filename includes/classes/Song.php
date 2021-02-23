@@ -14,8 +14,8 @@
         public function __construct($con,$id){
             $this->con = $con;
             $this->id = $id;
-            $query = mysqli_query($this->con,"SELECT * FROM songs WHERE id='$this->id'");
-            $this->mysqiData = mysqli_fetch_array($query);
+            $query = pg_query($this->con,"SELECT * FROM songs WHERE id='$this->id'");
+            $this->mysqiData = pg_fetch_array($query);
             $this->title =  $this->mysqiData['title'];
             $this->artistId =  $this->mysqiData['artist'];
             $this->albumId =  $this->mysqiData['album'];

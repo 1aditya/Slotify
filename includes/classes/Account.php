@@ -10,8 +10,8 @@
 
         public function login($un,$pw){
             $pw = md5($pw);
-            $query = mysqli_query($this->con,"SELECT * FROM users WHERE username='$un' AND password ='$pw'");
-            if(mysqli_num_rows($query)==1){
+            $query = pg_query($this->con,"SELECT * FROM users WHERE username='$un' AND password ='$pw'");
+            if(pg_num_rows($query)==1){
                 return true;
             }else{
                 array_push($this->errorArray,Constants::$loginFailed);
@@ -46,7 +46,7 @@
             $encrytptedPw = md5($pw);
             $profilePic ="assets/images/profile-pics/head_emerald.png";
             $date = date("Y-m-d");
-            $result = mysqli_query($this->con,"INSERT INTO users VALUES ('','$un','$fn','$ln','$em','$encrytptedPw','$date','$profilePic')");
+            $result = pg_query($this->con,"INSERT INTO users(username,firstName,lastName,email,password,signUpDate,profilePic) VALUES ('$un','$fn','$ln','$em','$encrytptedPw','$date','$profilePic')");
             return $result;
         }
 
@@ -56,8 +56,8 @@
                 return;
             }
             
-            $checkUsernameQuery = mysqli_query($this->con,"SELECT username FROM users WHERE username ='$un'");
-            if(mysqli_num_rows($checkUsernameQuery)!=0){
+            $checkUsernameQuery = pg_query($this->con,"SELECT username FROM users WHERE username ='$un'");
+            if(pg_num_rows($checkUsernameQuery)!=0){
                 array_push($this->errorArray,Constants::$usernameTaken);
                 return;
             }
@@ -88,8 +88,8 @@
                 array_push($this->errorArray,Constants::$emailInvalid);
                 return;
             }
-            $checkEmailQuery = mysqli_query($this->con,"SELECT username FROM users WHERE email ='$em'");
-            if(mysqli_num_rows($checkEmailQuery)!=0){
+            $checkEmailQuery = pg_query($this->con,"SELECT username FROM users WHERE email ='$em'");
+            if(pg_num_rows($checkEmailQuery)!=0){
                 array_push($this->errorArray,Constants::$emailTaken);
                 return;
             }

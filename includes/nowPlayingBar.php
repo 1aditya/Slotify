@@ -1,8 +1,8 @@
 <?php
 
-$songQuery = mysqli_query($con,"SELECT id FROM songs ORDER BY RAND() LIMIT 10");
+$songQuery = pg_query($con,"SELECT id FROM songs ORDER BY RANDOM() LIMIT 10");
 $resultArray = array();
-while($row = mysqli_fetch_array($songQuery)){
+while($row = pg_fetch_array($songQuery)){
     array_push($resultArray,$row['id']);
 }
 
@@ -157,7 +157,7 @@ function setTrack(trackId,newPlaylist,play){
 
         $.post("includes/handlers/ajax/getAlbumJson.php",{ albumId:track.album},function(data){
             var album = JSON.parse(data);
-            $(".albumLink img").attr("src",album.artworkPath);
+            $(".albumLink img").attr("src",album.artworkpath);
         });
 
 

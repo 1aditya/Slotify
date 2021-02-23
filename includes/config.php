@@ -5,10 +5,10 @@
 
     $timezone = date_default_timezone_set("Asia/Kolkata");
 
-    $con = mysqli_connect("localhost","root","","slotify");
+    $con = pg_connect(getenv("DATABASE_URL"));
 
-    if(mysqli_connect_errno()){
-        echo "Failed to connect: ". mysqli_connect_errno();
+    if($con==false){
+        echo "Failed to connect: ";
     }
 
 
