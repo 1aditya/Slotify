@@ -4,6 +4,10 @@ html,body{
     height: 100%;
 }
 
+*:focus {
+    outline: none;
+}
+
 *{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color:#fff;
@@ -198,6 +202,7 @@ body{
 
 .navItemLink:hover{
     color: #ffffff;
+    cursor: pointer;
     
 }
 
@@ -297,6 +302,7 @@ body{
 
 .tracklistRow:hover{
     background-color: #282828;
+    cursor: pointer;
 
 }
 .trackCount{
@@ -312,6 +318,7 @@ body{
 
 .tracklistRow:hover .trackCount img{
     visibility: visible;
+    cursor: pointer;
 }
 
 .tracklistRow .trackCount span{
@@ -320,6 +327,7 @@ body{
 
 .tracklistRow:hover .trackCount span{
     visibility: hidden;
+    cursor: pointer;
 }
 
 .tracklistRow .trackInfo{
@@ -345,6 +353,7 @@ body{
 .tracklistRow:hover .trackOptions img{
     width: 15px;
     visibility: visible;
+    cursor: pointer;
 }
 
 .tracklistRow .trackDuration{
@@ -359,3 +368,19 @@ body{
 }
 
 
+.button{
+    background-color: transparent;
+}
+
+.button:hover{
+    visibility: visible;
+    cursor: pointer;
+    color: #649146fd;
+}
+.logo img:hover {
+    cursor: pointer;
+}
+
+.gridViewItem:hover{
+    cursor: pointer;
+}
